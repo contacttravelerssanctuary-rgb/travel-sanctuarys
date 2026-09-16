@@ -20,7 +20,30 @@ body {
   background: #f7f5f0;
 }
 
-.rdp {
+.rdp-root {
   --rdp-accent-color: #5b6b5b;
-  --rdp-background-color: #efece4;
+  --rdp-accent-background-color: #efece4;
+  --rdp-today-color: #5b6b5b;
+  --rdp-animation_duration: 0s;
+}
+
+.rdp-root .rdp-day_button {
+  color: #1c2420;
+}
+
+.rdp-root .rdp-weekday {
+  color: #4a5650;
+  opacity: 1;
+}
+
+.rdp-root .rdp-caption_label,
+.rdp-root .rdp-month_caption {
+  color: #1c2420;
+  opacity: 1;
+}
+
+.rdp-root .rdp-month,
+.rdp-root .rdp-weeks,
+.rdp-root .rdp-months {
+  opacity: 1 !important;
 }

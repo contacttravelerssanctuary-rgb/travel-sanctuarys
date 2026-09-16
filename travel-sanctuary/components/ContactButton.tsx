@@ -13,6 +13,7 @@ export default function ContactButton({
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [website, setWebsite] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function ContactButton({
       const res = await fetch("/api/inquire", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, website }),
       });
       if (!res.ok) throw new Error();
       setStatus("sent");
@@ -67,6 +68,15 @@ export default function ContactButton({
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="font-sans px-8 pt-9 pb-8">
+                <input
+                  type="text"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  className="absolute left-[-9999px]"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <p className="text-accent text-xs font-bold tracking-widest uppercase mb-1">
                   Traveler's Sanctuary LLC
                 </p>

@@ -12,13 +12,17 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function POST(req: Request) {
-  const { name, email, phone, message, moveIn, moveOut } = await req.json();
+  const { name, email, phone, message, moveIn, moveOut, website } = await req.json();
+
+  // Honeypot: real visitors never fill this hidden field, bots often do
+  if (website) {
+    return Response.json({ success: true });
+  }
   const isBooking = Boolean(moveIn && moveOut);
 
   const dateBlock = isBooking ? `Move-in: ${moveIn}\nMove-out: ${moveOut}\n\n` : "";
 
   try {
-    // Notify the owner
     await resend.emails.send({
       from: "Traveler's Sanctuary Website <onboarding@resend.dev>",
       to: "contacttravelerssanctuary@gmail.com",
@@ -32,7 +36,6 @@ ${dateBlock}Message:
 ${message || "No additional message."}`,
     });
 
-    // Confirm with the guest, sent from the real Gmail account
     await transporter.sendMail({
       from: `"Traveler's Sanctuary LLC" <${process.env.GMAIL_USER}>`,
       to: email,

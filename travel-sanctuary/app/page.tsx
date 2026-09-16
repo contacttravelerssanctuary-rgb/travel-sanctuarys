@@ -1,6 +1,7 @@
 import AvailabilityGrid from "@/components/AvailabilityGrid";
 import InquiryButton from "@/components/InquiryButton";
 import ContactButton from "@/components/ContactButton";
+import TourButton from "@/components/TourButton";
 
 export default function Home() {
   return (
@@ -35,9 +36,7 @@ export default function Home() {
           <p className="text-base text-[#e9e7e0] mb-6 max-w-[420px]">
             Comfortable living for the traveling professional.
           </p>
-          <a href="#availability" className="inline-block bg-white text-dark px-7 py-3.5 text-[13px] font-bold tracking-wide uppercase rounded font-sans">
-            Check Availability
-          </a>
+          <InquiryButton label="Check Availability" className="inline-block bg-white text-dark px-7 py-3.5 text-[13px] font-bold tracking-wide uppercase rounded font-sans" />
         </div>
       </section>
 
@@ -56,25 +55,23 @@ export default function Home() {
         ))}
       </div>
 
-      {/* INTRO */}
+      {/* INTRO + MEET YOUR HOST */}
       <section id="intro" className="bg-cream py-16 px-8 scroll-mt-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-normal mb-3.5">Designed for the Traveling Professional</h2>
           <p className="text-ink-soft text-[15px] max-w-[560px] mx-auto mb-8">
             A quiet, comfortable home in a safe suburban neighborhood, ideal for travel nurses, consultants, agency contractors, and anyone working an assignment away from home.
           </p>
-          <a href="#gallery" className="inline-block bg-dark text-white px-7 py-3.5 text-[13px] font-bold tracking-wide uppercase rounded font-sans">
-            Take a Tour
-          </a>
+          <TourButton label="Take a Tour" className="inline-block bg-dark text-white px-7 py-3.5 text-[13px] font-bold tracking-wide uppercase rounded font-sans" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 max-w-[900px] mx-auto items-center pt-10 border-t border-line">
-          <div className="flex items-center justify-center bg-cream-2 rounded-md aspect-[4/3.4]">
-            <div className="w-40 h-40 rounded-full bg-line flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-24 h-24 text-white">
-                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.87 0-11 1.94-11 5.8V22h22v-2.2c0-3.86-7.13-5.8-11-5.8z" />
-              </svg>
-            </div>
+          <div className="rounded-md overflow-hidden aspect-[4/3.4]">
+            <img
+              src="/host-photo.png"
+              alt="Selome Zewdu, your host"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div>
             <p className="text-accent text-xs font-bold tracking-widest uppercase mb-2 font-sans">Meet Your Host</p>
@@ -89,6 +86,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* GALLERY */}
       <section id="gallery" className="bg-white text-center py-16 px-8 scroll-mt-20">
         <h2 className="text-3xl font-normal mb-3.5">Inside the Home</h2>
@@ -128,14 +126,20 @@ export default function Home() {
         </div>
         <div className="max-w-[820px] mx-auto rounded-lg overflow-hidden aspect-[16/9] border border-line">
           <iframe
-            src="https://www.google.com/maps?q=211+Waterwood+Dr,+Wylie,+TX+75098&output=embed"
+            src="https://www.google.com/maps?ll=33.0151,-96.5388&z=12&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Map showing the property location in Wylie, Texas"
+            title="General area of the property in Wylie, Texas"
           />
+        </div>
+        <div className="max-w-[820px] mx-auto mt-4 flex items-center justify-center gap-2 bg-cream-2 border border-accent/40 rounded-md px-4 py-3 font-sans">
+          <span className="text-accent text-lg">📍</span>
+          <p className="text-ink text-sm font-semibold">
+            Exact address is shared with guests upon confirmed booking.
+          </p>
         </div>
       </section>
 
@@ -220,10 +224,11 @@ export default function Home() {
             <h4 className="text-white text-[13px] mb-3.5 tracking-wide uppercase">Information</h4>
             <a href="#rules" className="block text-[#b7bdb5] mb-2 text-[13px]">House Rules</a>
             <a href="#amenities" className="block text-[#b7bdb5] mb-2 text-[13px]">Amenities</a>
+            <a href="/privacy" className="block text-[#b7bdb5] mb-2 text-[13px]">Privacy Policy</a>
           </div>
           <div>
             <h4 className="text-white text-[13px] mb-3.5 tracking-wide uppercase">Contact</h4>
-            <p className="text-[#9aa39a] text-[13px] leading-relaxed">(555) 123-4567</p>
+            <p className="text-[#9aa39a] text-[13px] leading-relaxed">(469) 831-9855</p>
             <p className="text-[#9aa39a] text-[13px] leading-relaxed">contacttravelerssanctuary@gmail.com</p>
             <p className="text-[#9aa39a] text-[13px] leading-relaxed">Wylie, Texas</p>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { DayPicker, DateRange } from "react-day-picker";
-import "react-day-picker/dist/style.css";
+import "react-day-picker/style.css";
 
 export default function InquiryButton({
   label,
@@ -18,6 +18,7 @@ export default function InquiryButton({
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [bookedRanges, setBookedRanges] = useState<DateRange[]>([]);
+  const [website, setWebsite] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -59,6 +60,7 @@ export default function InquiryButton({
           message,
           moveIn: range.from.toDateString(),
           moveOut: range.to.toDateString(),
+          website,
         }),
       });
       if (!res.ok) throw new Error();
@@ -107,6 +109,15 @@ export default function InquiryButton({
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="font-sans px-8 pt-9 pb-8">
+                <input
+                  type="text"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  className="absolute left-[-9999px]"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <p className="text-accent text-xs font-bold tracking-widest uppercase mb-1">
                   Traveler's Sanctuary LLC
                 </p>
